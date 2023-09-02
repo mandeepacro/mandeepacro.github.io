@@ -1,1 +1,0 @@
-# mandeepacro.github.io
