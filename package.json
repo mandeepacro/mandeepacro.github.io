@@ -1,0 +1,56 @@
+{
+  "name": "my-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "my-portfolio",
+  "author": "mandeepb29",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "deploy": "gatsby build",
+    "deploy:ci": "gatsby build && gh-pages -d public -b main -r https://$GH_TOKEN@github.com/mandeepb29/portfolio.git"
+  },
+  "dependencies": {
+    "@mdx-js/mdx": "^2.3.0",
+    "@mdx-js/react": "^2.3.0",
+    "babel-plugin-styled-components": "^2.0.7",
+    "dotenv": "^16.0.3",
+    "gatsby": "^5.6.0",
+    "gatsby-plugin-image": "^3.8.0",
+    "gatsby-plugin-mdx": "^5.11.0",
+    "gatsby-plugin-sass": "^6.6.0",
+    "gatsby-plugin-sharp": "^5.8.1",
+    "gatsby-plugin-styled-components": "^6.6.0",
+    "gatsby-remark-images": "^7.11.0",
+    "gatsby-source-filesystem": "^5.8.0",
+    "gatsby-transformer-remark": "^6.8.0",
+    "gatsby-transformer-sharp": "^5.8.0",
+    "jquery": "^3.7.0",
+    "openai": "^3.2.1",
+    "react": "^18.2.0",
+    "react-content-loader": "^6.2.1",
+    "react-dom": "^18.2.0",
+    "react-intersection-observer": "^9.4.3",
+    "react-owl-carousel": "^2.3.3",
+    "react-scroll": "^1.8.9",
+    "react-slick": "^0.29.0",
+    "react-type-animation": "^3.0.1",
+    "react-typing-effect": "^2.0.5",
+    "remark-class-names": "^0.1.0",
+    "slick-carousel": "^1.8.1",
+    "typed.js": "^2.0.16"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "gatsby-plugin-postcss": "^6.6.0",
+    "gh-pages": "^5.0.0",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.7"
+  }
+}

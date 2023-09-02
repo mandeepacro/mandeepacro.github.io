@@ -1,0 +1,19 @@
+#hamburgerBtn div{
+    @apply from-purplelight to-purplelight2 transition-all ease-out-back duration-300;
+}
+
+#hamburgerBtn.active div{
+    @apply from-lightred to-lightorange w-7;
+}
+
+#hamburgerBtn.active div:nth-child(1){
+    transform: translateY(0.4rem) rotate(45deg);
+}
+
+#hamburgerBtn.active div:nth-child(2){
+    transform: translateY(-0.35rem) rotate(-45deg);
+}
+
+#navMenu.active {
+    @apply opacity-100 visible
+}

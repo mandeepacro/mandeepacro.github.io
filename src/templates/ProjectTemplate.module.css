@@ -1,0 +1,26 @@
+.content-glass-div{
+    @apply border-t border-b border-2 border-white pt-4 rounded-[4rem] lg:rounded-[12rem];
+    border: 2px solid hsl(0, 0%, 100%);
+    backdrop-filter: blur(4px);
+    background:linear-gradient(to bottom, rgba(255, 255, 255, 0.308) 2%,rgba(255, 255, 255, 0.81) 10%, #FFFFFF  80%, rgba(255, 255, 255, 0.81));
+}
+
+.content{
+    @apply mt-24 mb-12;
+}
+
+.content h1{
+    @apply text-3xl mt-16 mb-6 tracking-tight;
+}
+
+.content p,.content ul li {
+    @apply text-darkgrey;
+    line-height: 1.8;
+}
+.content ul li{
+    @apply mb-4;
+}
+.content ul li:before{
+    content: "→"; @apply text-2xl inline-block mr-2
+}
+

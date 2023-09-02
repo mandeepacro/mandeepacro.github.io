@@ -1,0 +1,7 @@
+.paragraph{
+    @apply text-[#7a777c] font-dm font-normal text-center lg:text-right text-lg lg:text-xl;
+}
+
+.paragraph p{
+    @apply leading-normal mb-8
+}

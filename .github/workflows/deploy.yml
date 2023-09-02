@@ -1,0 +1,43 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master  # Change this to your main branch name
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: GitHub Config
+        run: |
+          git config --global user.email "mandeepbaghelcs17@acropolis.in"
+          git config --global user.name "mandeepacro"
+          
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.x'  # Change this to your desired Node.js version
+      
+      - name: Set environment variable
+        run: |
+          export GATSBYAPP_API_SECRET_KEY=${{ secrets.API_SECRET_KEY }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build app
+        run: npm run deploy
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: main
+          folder: public
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+          
