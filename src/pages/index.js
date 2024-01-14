@@ -11,18 +11,16 @@ const navMenuDesktopWidth = 1280;
 
 // Step 2: Define your component
 const IndexPage = () => {
-  useEffect(()=>{
-   
-    console.log("enter homepage");
+  useEffect(() => {
 
     //if(typeof localStorage !== 'undefined'){
-      const scrollEasingFunction = "easeInOutCubic";
-      const scrollDuration = 750;
-      let sectionId = localStorage.getItem("mPortfolio_HomePageSectionId");
-      let offset = parseInt(localStorage.getItem("mPortfolio_HomePageSectionOffset"));
+    const scrollEasingFunction = "easeInOutCubic";
+    const scrollDuration = 750;
+    let sectionId = localStorage.getItem("mPortfolio_HomePageSectionId");
+    let offset = parseInt(localStorage.getItem("mPortfolio_HomePageSectionOffset"));
     //}
-    
-    if(sectionId){
+
+    if (sectionId) {
       let scrollOptions = {
         duration: scrollDuration,
         smooth: scrollEasingFunction,
@@ -30,22 +28,22 @@ const IndexPage = () => {
         offset: window.innerWidth < navMenuDesktopWidth ? offset - 20 : offset, // Offset for scroll position (pixels)
         //hashSpy: true, // Scroll to element with matching hash in URL,
       };
-      console.log("scroll to section - ",sectionId,  scrollOptions)
+      console.log("scroll to section - ", sectionId, scrollOptions)
       scroller.scrollTo(sectionId, scrollOptions);
       localStorage.removeItem("mPortfolio_HomePageSectionId");
       localStorage.removeItem("mPortfolio_HomePageSectionOffset");
     };
-  
-  },[]);
+
+  }, []);
 
   return (
     <main id='mainWrapper'>
       <Layout>
-      <HeaderSection />
-      <ProjectsSection />
-      <SkillsSection />
-      <TestimonialSection />
-      <AboutSection />
+        <HeaderSection />
+        <ProjectsSection />
+        <SkillsSection />
+        <TestimonialSection />
+        <AboutSection />
       </Layout>
     </main>
   )

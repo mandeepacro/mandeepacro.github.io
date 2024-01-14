@@ -2,6 +2,7 @@ import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby';
 import TestimonialCarousel from './TestimonialCarousel';
 
+
 function TestimonialSection() {
   const data = useStaticQuery(
     graphql`

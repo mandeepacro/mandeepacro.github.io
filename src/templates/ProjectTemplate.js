@@ -1,11 +1,10 @@
 import React from 'react'
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from '../components/common/layout';
 import * as styles from "./ProjectTemplate.module.css";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import RightIcon from "../images/right-arrow.png"
 import { Link } from "gatsby"
-import NotFoundPage from '../pages/404';
 
 export default function ProjectTemplate({
   data, // this prop will be injected by the GraphQL query below.
@@ -18,7 +17,7 @@ export default function ProjectTemplate({
   console.log("all projects", AllProjects);
   console.log("frontmatter", frontmatter);
 
-  const currentIndex = AllProjects.findIndex(el => el.frontmatter.id == frontmatter.id);
+  const currentIndex = AllProjects.findIndex(el => el.frontmatter.id === frontmatter.id);
   console.log("current index", currentIndex);
   const nextIndex = (currentIndex + 1) % AllProjects.length;
   const nextProject = AllProjects[nextIndex].frontmatter;
@@ -66,6 +65,8 @@ export default function ProjectTemplate({
         case b:
           h = (r - g) / d + 4;
           break;
+        default:
+          return
       }
 
       h /= 6;
@@ -133,7 +134,7 @@ export default function ProjectTemplate({
                 </p>
                 {frontmatter?.technologies?.map(item => (
                   <div className="inline-flex gap-2 mr-4 mb-4 items-center shadow-sm px-4 lg:px-6 py-2 rounded-full bg-white">
-                    <GatsbyImage class='w-6 h-auto object-contain' image={getImage(item?.image?.childImageSharp?.gatsbyImageData)} alt={item.name} />
+                    <GatsbyImage alt={`thumb_${item?.title}`} className='w-6 h-auto object-contain' image={getImage(item?.image?.childImageSharp?.gatsbyImageData)} />
                     <p className='text-sm text-dark font-bold'>{item.name}</p>
                   </div>
                 ))}

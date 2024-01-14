@@ -22,10 +22,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '18.x'  # Change this to your desired Node.js version
-      
-      - name: Set environment variable
-        run: |
-          export GATSBYAPP_API_SECRET_KEY=${{ secrets.API_SECRET_KEY }}
 
       - name: Install dependencies
         run: npm install
@@ -39,5 +35,6 @@ jobs:
           branch: main
           folder: public
           token: ${{ secrets.GITHUB_TOKEN }}
+          API_SECRET_KEY: ${{secrets.API_SECRET_KEY}}
 
           

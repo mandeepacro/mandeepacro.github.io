@@ -42,7 +42,7 @@ const SkillsSection = () => {
     `);
 
   useEffect(() => {
-    console.log("API key is undefined - ", process.env.GATSBYAPP_API_SECRET_KEY);
+    console.log("API key from settings: ", process.env.GATSBYAPP_API_SECRET_KEY);
     let skillsArray = data.allMarkdownRemark.nodes[0].frontmatter.list;
     let skills = [];
     skillsArray.forEach(el => {
@@ -57,9 +57,9 @@ const SkillsSection = () => {
         try {
           setPoemText("initiated");
           setDisableGenerateButton(true);
-          let result = await createCompletion(false);
-            generateNonUsedSkills(result);
-            setResponse(result);
+          let result = await createCompletion();
+          generateNonUsedSkills(result);
+          setResponse(result);
         } catch (error) {
           console.error('Error fetching data:', error);
           setResponse(ErrorMessage);
@@ -70,11 +70,11 @@ const SkillsSection = () => {
     //get the poem response from chatGPT
   }, []); // empty dependency array to run the effect only once
 
-  
-  async function createCompletion(isMock) {
+
+  async function createCompletion(isMock = true) {
     prompt = `Generate a sweet, simple and fun poem of developing a fullstack website using my skills. Here are the list of skills to use - ${skillsList.current.map(obj => obj.name).join(", ")}. Note: Generate a intersesting title for the poem as the first line and then start with the poem body, Use exact words as provided in the skills to use list.`;
 
-    console.log("CALLING THE API");
+    console.log("CALLING OPENAI API");
     const DEFAULT_PARAMS = {
       model: "gpt-3.5-turbo",
       messages: [{ role: "user", content: prompt }],
@@ -82,19 +82,19 @@ const SkillsSection = () => {
     };
 
     if (!isMock) {
-        const result = await fetch('https://api.openai.com/v1/chat/completions', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${apiSecretKey}`
-          },
-          body: JSON.stringify(DEFAULT_PARAMS)
-        });
-  
-        const stream = result.body
-        const output = await fetchStream(stream);
-        console.log("output - ", output);
-        return output.choices[0].message.content;
+      const result = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiSecretKey}`
+        },
+        body: JSON.stringify(DEFAULT_PARAMS)
+      });
+
+      const stream = result.body
+      const output = await fetchStream(stream);
+      console.log("API RESPONSE: ", output);
+      return output.choices[0].message.content;
     }
     else {
       let mockPoem = `The Sweet Symphony of Fullstack Development
@@ -150,19 +150,19 @@ const SkillsSection = () => {
     if (response && sectionIsVisible) {
       handleSectionVisibility(true);
     }
-  }, [response]); // empty dependency array to run the effect only once
+  }, [response]);
 
   useEffect(() => {
-    //console.log("useEffect poemText - ",poemText);
+    console.log("useEffect poemText - ", poemText);
     if (poemText && poemText != "initiated") {
       //if(typed.current == null){
       typed.current = null;
       typed.current = new Typed(el.current, {
         strings: [convertPoemTextToFormattedHtmlString(poemText)],
         backSpeed: 0,
-        showCursor: false,
+        showCursor: true,
         loop: false,
-        typeSpeed: 10,
+        typeSpeed: 2,
         onComplete: handleHonourableMentionText
       });
     }
@@ -207,7 +207,7 @@ const SkillsSection = () => {
       if (isVisible) {
         setSectionIsVisible(true);
         //console.log("Section is now visible!");
-        if (response && poemText == "initiated") {
+        if (response && poemText === "initiated") {
           //console.log("Got the resonse - ", response);
           setPoemText(response);
         }
@@ -227,14 +227,14 @@ const SkillsSection = () => {
     setResponse(null)
     setShowHonourableMentionText(false);
 
-    try{
-    let result = await createCompletion(false);
-    generateNonUsedSkills(result);
-    setResponse(result);
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    setResponse(ErrorMessage);
-  }
+    try {
+      let result = await createCompletion(false);
+      generateNonUsedSkills(result);
+      setResponse(result);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      setResponse(ErrorMessage);
+    }
   }
 
   function handleHonourableMentionText() {
@@ -277,7 +277,7 @@ const SkillsSection = () => {
               <div className="col-span-2 lg:border-l border-darkgrey border-opacity-25">
                 <div className="text-center lg:text-right">
                   {
-                    (response != null && poemText !== "initiated") ?
+                    (response !== null && poemText !== "initiated") ?
                       <>
                         <div ref={el} className={styles.paragraph}></div>
                         {
@@ -289,12 +289,12 @@ const SkillsSection = () => {
                               <div className="text-center lg:text-right">
                                 {
                                   skillsIgnored.map((skill, index) => (
-                                    <p className='inline-block mr-1 text-base  lg:text-xl text-white font-bold leading-normal'>
+                                    <p className='inline-block mr-1 text-base  lg:text-xl text-white font-bold leading-normal' key={`skill-${skill.name}`}>
                                       <span className='relative z-20' style={{ color: skill.color }}>
                                         {skill.name}
                                       </span>
                                       <span className='relative z-20'>
-                                        {index != skillsIgnored.length - 1 ? "," : ""}
+                                        {index !== skillsIgnored.length - 1 ? "," : ""}
                                       </span>
                                     </p>
                                   ))
@@ -342,39 +342,5 @@ const SkillsSection = () => {
 
 export default SkillsSection
 
-
-
-  // var poemText =
-  //   `The Full-Stack Adventure
-
-  //   HTML and CSS,
-  //   Are where I start my quest,
-  //   I add in JavaScript,
-  //   And create what's best.
-
-  //   With SCSS and Angular,
-  //   My site becomes a thrill,
-  //   React and Blazor,
-  //   Are where I get my fill.
-
-  //   .NET API and Azure,
-  //   Are where my code takes flight,
-  //   And with Figma and Adobe XD,
-  //   My design is always right.
-
-  //   GitHub and Postman,
-  //   Are where my testing's done,
-  //   While npm, Visual Studio,
-  //   And VS Code are loads of fun.
-
-  //   Bootstrap and Tailwind CSS,
-  //   Are where my site gets styled,
-  //   And building this full-stack website,
-  //   Has kept me well beguiled.
-
-  //   So come and take an adventure,
-  //   Through my website you'll see,
-  //   All the skills I have amassed,
-  //   To create such mastery.`;
 
 

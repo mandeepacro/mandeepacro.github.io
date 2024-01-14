@@ -5,11 +5,12 @@
 @tailwind utilities;
 
 @layer base {
-    body{
+    body {
         overflow-x: hidden;
         scroll-behavior: smooth;
         scroll-snap-type: proximity;
     }
+
     section {
         @apply py-12 md:py-16 lg:py-20;
     }
@@ -64,20 +65,24 @@
     .section-heading {
         @apply text-gradient bg-gradient-to-r from-lightorange to-purplelight uppercase font-bold mx-auto mb-8 md:mb-12;
     }
+
     .section-heading-dark {
-        @apply  from-lightorange2 to-purplelight2;
+        @apply from-lightorange2 to-purplelight2;
     }
 
     .btn {
         @apply relative bg-white rounded-full transition-all duration-300 border border-black px-5 py-2 font-syne font-bold border-opacity-20 hover:border-opacity-10 hover:-translate-y-1 active:translate-y-0 shadow-sm shadow-transparent hover:shadow-lightorange hover:shadow-md active:shadow-sm active:shadow-zinc-300
     }
-    .btn:disabled{
-        @apply shadow-none bg-white opacity-70 cursor-not-allowed; 
+
+    .btn:disabled {
+        @apply shadow-none bg-white opacity-70 cursor-not-allowed;
     }
-    .btn:disabled span{
+
+    .btn:disabled span {
         @apply bg-darkgrey;
         background-image: transparent;
     }
+
     .btn.btn-dark {
         @apply shadow-darkgrey hover:shadow-dark hover:shadow-md active:shadow-transparent
     }
@@ -92,20 +97,21 @@
         background-position-x: 60%;
     }
 
-    .text-gr-link span{
+    .text-gr-link span {
         @apply text-gradient relative z-10 transition-all duration-500 block;
         background-image: linear-gradient(135deg, rgb(98, 98, 98) 0%, rgb(90, 90, 90), rgba(255, 176, 159, 1) 62%, rgba(208, 179, 255, 1) 100%);
         background-size: 300%;
     }
 
-    .text-gr-link:hover span{
+    .text-gr-link:hover span {
         background-position-x: 80%;
-    } 
+    }
 
-    .bg-light-gr{
+    .bg-light-gr {
         background: linear-gradient(92.68deg, #FFF6EB 1.15%, #FFFFFF 56.24%, #FBF5FF 100%);
     }
 }
+
 /* 
 .image-grid p{
     @apply grid grid-cols-2 gap-4;
@@ -114,35 +120,50 @@
 
 .image-row {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Adjust the minimum width and column flexibility as needed */
-    grid-gap: 1rem; /* Adjust the gap between images */
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    /* Adjust the minimum width and column flexibility as needed */
+    grid-gap: 1rem;
+    /* Adjust the gap between images */
     justify-content: center;
     align-items: center;
-  }
-  
-  .image-column {
+}
+
+.image-column {
     /* padding: 10px; */
-  }
-  
+}
+
 
 
 @keyframes fadeup {
 
     from {
         opacity: 0;
-        display:none;
+        display: none;
         transform: translateY(20%);
-        
+
     }
+
     to {
-        opacity: 1; 
-        display:block;
+        opacity: 1;
+        display: block;
         transform: translateY(0);
     }
 }
 
 /*library overrides*/
-
-.owl-carousel .owl-stage{
+.owl-carousel .owl-stage {
     @apply md:pl-0;
+}
+
+.owl-carousel .owl-nav button.owl-prev,.owl-carousel .owl-nav button.owl-next {
+    @apply absolute top-1/2 -mt-4 h-12 w-12 !bg-white rounded-full flex items-center justify-center shadow-lg;
+}
+.owl-carousel .owl-nav button.owl-prev{
+    @apply left-6;
+}
+.owl-carousel .owl-nav button.owl-next{
+    @apply right-6;
+}
+.owl-carousel .owl-nav button.owl-prev img,.owl-carousel .owl-nav button.owl-next img{
+    @apply h-4;
 }
