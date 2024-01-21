@@ -5,10 +5,10 @@ import * as styles from "./skillsSection.module.css";
 import { InView } from 'react-intersection-observer';
 import { Code } from 'react-content-loader'
 import Typed from "typed.js";
-import { createSkillsPoem } from '../functions/apiCaller';
 
 const SkillsSection = () => {
   const skillsList = useRef([]);
+  const skillsPrmopt = useRef([]);
   const el = useRef(null);
   const typed = useRef(null)
   const [poemText, setPoemText] = useState(null);
@@ -18,6 +18,7 @@ const SkillsSection = () => {
   const [sectionIsVisible, setSectionIsVisible] = useState(false);
   const [disableGenerateButton, setDisableGenerateButton] = useState(true);
   const ErrorMessage = "Unable to generate poem due to some error. Please try again sometime later.";
+  const apiBaseUrl = `/.netlify/functions/chatgpt?prompt=`;
   //var typedObj = null;
 
   const data = useStaticQuery(
@@ -49,15 +50,18 @@ const SkillsSection = () => {
       });
     })
     skillsList.current = skills;
+    skillsPrmopt.current = `Generate a sweet, simple and fun poem of developing a fullstack website using my skills. Here are the list of skills to use - ${skillsList.current.map(obj => obj.name).join(", ")}. Note: Generate a intersesting title for the poem as the first line and then start with the poem body, Use exact words as provided in the skills to use list.`;
 
     if (typeof window !== "undefined") {
       const fetchPoemData = async () => {
         try {
           setPoemText("initiated");
           setDisableGenerateButton(true);
-          let result = await createSkillsPoem(skillsList.current);
-          generateNonUsedSkills(result);
-          setResponse(result);
+          let result = await fetch(`${apiBaseUrl}'${skillsPrmopt.current}'`).then(res => res.json());
+          let responseJSON = JSON.parse(result);
+          const output = responseJSON.choices[0].message.content;
+          generateNonUsedSkills(output);
+          setResponse(output);
         } catch (error) {
           console.error('Error fetching data:', error);
           setResponse(ErrorMessage);
@@ -149,9 +153,11 @@ const SkillsSection = () => {
     setShowHonourableMentionText(false);
 
     try {
-      let result = await createSkillsPoem(skillsList.current,false);
-      generateNonUsedSkills(result);
-      setResponse(result);
+      let result = await fetch(`${apiBaseUrl}'${skillsPrmopt.current}'`).then(res => res.json());
+      let responseJSON = JSON.parse(result);
+      const output = responseJSON.choices[0].message.content;
+      generateNonUsedSkills(output);
+      setResponse(output);
     } catch (error) {
       console.error('Error fetching data:', error);
       setResponse(ErrorMessage);
@@ -165,6 +171,40 @@ const SkillsSection = () => {
       setShowHonourableMentionText(true);
     }
   }
+
+  
+  async function fetchStream(stream) {
+    const reader = stream.getReader();
+    let charsReceived = 0;
+    const li = document.createElement("li");
+
+    // read() returns a promise that resolves
+    // when a value has been received
+    const result = await reader.read().then(
+      function processText({ done, value }) {
+        // Result objects contain two properties:
+        // done  - true if the stream has already given you all its data.
+        // value - some data. Always undefined when done is true.
+        if (done) {
+          //console.log("Stream complete");
+          return li.innerText;
+        }
+        // value for fetch streams is a Uint8Array
+        charsReceived += value.length;
+        const chunk = value;
+        //console.log(`Received ${charsReceived} characters so far. Current chunk = ${chunk}`);
+        li.appendChild(document.createTextNode(chunk));
+        return reader.read().then(processText);
+      });
+    const list = result.split(",")
+    const numList = list.map((item) => {
+      return parseInt(item)
+    })
+    const text = String.fromCharCode(...numList);
+    const res = JSON.parse(text);
+    return res;
+  }
+
 
   return (
     <div>
