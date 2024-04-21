@@ -28,6 +28,7 @@ const IndexPage = () => {
         offset: window.innerWidth < navMenuDesktopWidth ? offset - 20 : offset, // Offset for scroll position (pixels)
         //hashSpy: true, // Scroll to element with matching hash in URL,
       };
+      
       console.log("scroll to section - ", sectionId, scrollOptions)
       scroller.scrollTo(sectionId, scrollOptions);
       localStorage.removeItem("mPortfolio_HomePageSectionId");
@@ -42,7 +43,7 @@ const IndexPage = () => {
         <HeaderSection />
         <ProjectsSection />
         <SkillsSection />
-        <TestimonialSection />
+        {/* <TestimonialSection /> */}
         <AboutSection />
       </Layout>
     </main>

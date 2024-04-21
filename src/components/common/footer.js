@@ -13,11 +13,11 @@ function Footer() {
         </h2>
         </div>
         <div className="text-center">
-        <button className="btn btn-primary">
+        <a className="btn btn-primary" href="mailto:mandeepb29@gmail.com">
         <span>
         connect with me
                   </span>
-        </button>
+        </a>
         </div>
         </div>
         <div className="container mt-28">

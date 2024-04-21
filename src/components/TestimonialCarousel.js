@@ -4,9 +4,9 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import quoteUpImg from '../images/quote-up.png';
 import quoteDownImg from '../images/quote-down.png';
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import RightIcon from "../images/right-arrow.png"
-import LeftIcon from "../images/left-arrow.png"
 import * as styles from "./TestimonialCarousel.module.css"
+import LeftButton from './common/leftButton';
+import RightButton from './common/rightButton';
 
 let OwlCarousel;
 function TestimonialCarousel({ carouselData }) {
@@ -54,7 +54,7 @@ function TestimonialCarousel({ carouselData }) {
           stagePadding: 120
         }
       }} loop={true} nav={true}
-      navText={[`<img src=${LeftIcon} />`, `<img src=${RightIcon} />`]}
+       navText={[<LeftButton />, <RightButton />]}
     >
 
       {

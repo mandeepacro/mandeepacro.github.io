@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import Logo from "../../images/mandeep.svg";
 import "./navbar.css";
 import SocialMediaPanel from './socialMediaPanel';
 import { Link, scroller } from 'react-scroll'
 import { navigate } from "gatsby";
 import { withPrefix } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
 
 const Navbar = ({ isWhite }) => {
   const linkStyle = `
-     ${isWhite ? "text-darkgrey hover:text-dark" : "text-gray hover:text-white"} navLink cursor-pointer text-xl xl:text-lg font-dm font-bold block transition duration-300  border-b border-b-gray border-opacity-25 pb-4 xl:border-opacity-0 xl:pb-0`;
+     ${isWhite ? 'text-darkgrey hover:text-dark' : 'text-gray hover:text-white'} navLink cursor-pointer text-xl xl:text-lg font-dm font-bold block transition duration-300  border-b border-b-gray border-opacity-25 pb-4 xl:border-opacity-0 xl:pb-0`;
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpened, setMenuOpened] = useState(false);
@@ -50,8 +50,8 @@ const Navbar = ({ isWhite }) => {
   const links = [
     { name: "work", id: "work", offset: -40 },
     { name: "skills", id: "skills", offset: -30 },
-    { name: "testimonial", id: "testimonial", offset: -40 },
-    { name: "about me (more)", id: "about", offset: -50 },
+    // { name: "testimonial", id: "testimonial", offset: -40 },
+    { name: "about me", id: "about", offset: -50 },
     { name: "contact", id: "contact", offset: 0 },
   ]
 
@@ -82,7 +82,7 @@ const Navbar = ({ isWhite }) => {
       <div className="container">
         <nav className={`flex flex-row justify-between items-center transition-all ease-in duration-200 delay-300 py-3 xl:py-4 border-b border-b-gray ${isScrolled ? 'border-opacity-25' : 'border-opacity-0'}`}>
           <Link className='z-[49] cursor-pointer navLink' onClick={() => scrollToSection("home", 0)} offset={0} to="/" >
-            <img src={Logo} className={`h-10 xl:h-12`} alt="Mandeep Logo" id='websiteLogo' />
+            <StaticImage className={`h-10 xl:h-12 object-contain`} quality={100} height={40} objectFit={"contain"} src="../../images/mandeep.svg" alt="Mandeep Logo" id='websiteLogo' />
           </Link>
 
           <div className="z-[49] cursor-pointer py-1 px-3 w-16 h-12 flex flex-col xl:hidden items-center" id='hamburgerBtn'>

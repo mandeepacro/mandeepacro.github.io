@@ -59,6 +59,7 @@ const SkillsSection = () => {
           setDisableGenerateButton(true);
           let result = await fetch(`${apiBaseUrl}'${skillsPrmopt.current}'`).then(res => res.json());
           let responseJSON = JSON.parse(result);
+          console.log("responseJSON - ",responseJSON);
           const output = responseJSON.choices[0].message.content;
           generateNonUsedSkills(output);
           setResponse(output);
@@ -67,9 +68,9 @@ const SkillsSection = () => {
           setResponse(ErrorMessage);
         }
       };
-      fetchPoemData();
-    }
     //get the poem response from chatGPT
+    fetchPoemData();
+    }
   }, []); // empty dependency array to run the effect only once
 
   useEffect(() => {
@@ -170,39 +171,6 @@ const SkillsSection = () => {
     if (skillsIgnored.length > 0) {
       setShowHonourableMentionText(true);
     }
-  }
-
-  
-  async function fetchStream(stream) {
-    const reader = stream.getReader();
-    let charsReceived = 0;
-    const li = document.createElement("li");
-
-    // read() returns a promise that resolves
-    // when a value has been received
-    const result = await reader.read().then(
-      function processText({ done, value }) {
-        // Result objects contain two properties:
-        // done  - true if the stream has already given you all its data.
-        // value - some data. Always undefined when done is true.
-        if (done) {
-          //console.log("Stream complete");
-          return li.innerText;
-        }
-        // value for fetch streams is a Uint8Array
-        charsReceived += value.length;
-        const chunk = value;
-        //console.log(`Received ${charsReceived} characters so far. Current chunk = ${chunk}`);
-        li.appendChild(document.createTextNode(chunk));
-        return reader.read().then(processText);
-      });
-    const list = result.split(",")
-    const numList = list.map((item) => {
-      return parseInt(item)
-    })
-    const text = String.fromCharCode(...numList);
-    const res = JSON.parse(text);
-    return res;
   }
 
 

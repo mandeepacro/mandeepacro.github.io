@@ -30,7 +30,8 @@ module.exports = {
       fontFamily: {
         syne: ["Syne, sans-serif"],
         dm: ["DM Sans, sans-serif"],
-        code:["Azeret Mono, monospace"]
+        code:["Azeret Mono, monospace"],
+        writing:["Gloria Hallelujah, cursive"]
       },
       fontSize: {
         '7xl':'6.5rem'
