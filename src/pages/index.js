@@ -6,7 +6,7 @@ import SkillsSection from '../components/skillsSection';
 import TestimonialSection from '../components/testimonialSection';
 import AboutSection from '../components/aboutSection';
 import { scroller } from 'react-scroll'
-
+import Favicon from "../images/favicon.svg";
 const navMenuDesktopWidth = 1280;
 
 // Step 2: Define your component
@@ -50,8 +50,10 @@ const IndexPage = () => {
   )
 }
 
-// You'll learn about this in the next task, just copy it for now
-export const Head = () => <title>Mandeep Baghel</title>
+export const Head = () => 
+<head>
+<title>Mandeep Baghel</title>
+<link rel="icon" type="image/x-icon" href={Favicon} />
+</head> 
 
-// Step 3: Export your component
 export default IndexPage

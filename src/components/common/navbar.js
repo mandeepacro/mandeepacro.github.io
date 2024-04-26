@@ -78,7 +78,7 @@ const Navbar = ({ isWhite }) => {
   }
 
   return (
-    <div className={`fixed w-full ${isWhite ? isScrolled ? "bg-white" : "bg-transparent" : "bg-dark"} z-[50] xl:z-40 transition-all ease-in-out-circ`}>
+    <div className={`fixed w-full ${isWhite ? isScrolled ? "bg-white" : "bg-transparent" : "bg-dark"} ${menuOpened ? "z-50":"z-40"} transition-all ease-in-out-circ`}>
       <div className="container">
         <nav className={`flex flex-row justify-between items-center transition-all ease-in duration-200 delay-300 py-3 xl:py-4 border-b border-b-gray ${isScrolled ? 'border-opacity-25' : 'border-opacity-0'}`}>
           <Link className='z-[49] cursor-pointer navLink' onClick={() => scrollToSection("home", 0)} offset={0} to="/" >

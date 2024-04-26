@@ -212,7 +212,7 @@ const SkillsSection = () => {
                         {
                           skillsIgnored.length > 0 && showHonourableMentionText ? (
                             <div className='animate animate-fade-up'>
-                              <h4 className='mt-20 text-white text-center lg:text-right font-semibold mb-2'>
+                              <h4 className='mt-10 text-white text-center lg:text-right font-semibold mb-2'>
                                 Some honorable mentions that ChatGPT ignored in above masterpiece -
                               </h4>
                               <div className="text-center lg:text-right">

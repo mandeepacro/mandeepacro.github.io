@@ -4,7 +4,7 @@ import SocialMediaPanel from "./socialMediaPanel";
 function Footer() {
     const currentYear = new Date().getFullYear();
   return (
-    <section className='bg-white p-0 z-[45] relative' id='contact'> 
+    <section className='bg-white p-0 z-[45] relative min-h-screen' id='contact'> 
         <div className="flex flex-col min-h-screen pt-16 xl:pt-0 justify-between">
         <div className="container mt-16">
         <div className="text-center">

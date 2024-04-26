@@ -21,10 +21,7 @@ list:
       - name: React
         image: ../../images/logos/angular.png
         color: '#61dafb'
-      - name: Blazor
-        image: ../../images/logos/angular.png
-        color: '#512bd4'
-      - name: .NET API
+      - name: .NET
         image: ../../images/logos/angular.png
         color: '#512bd4'
       - name: Azure
@@ -42,9 +39,7 @@ list:
       - name: Figma
         image: ../../images/logos/angular.png
         color: '#f24e1e'
-      - name: Adobe XD
-        image: ../../images/logos/angular.png
-        color: '#ff26be'
+
   - domain: Tools & IDE
     skills:
       - name: GitHub

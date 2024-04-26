@@ -13,7 +13,7 @@ import "yet-another-react-lightbox/plugins/captions.css";
 import "yet-another-react-lightbox/plugins/counter.css";
 import RightButton from './common/rightButton';
 import LeftButton from './common/leftButton';
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image"
 
 function ImageLightBox() {
     const [photos, setPhotos] = useState([]);
@@ -69,7 +69,7 @@ function ImageLightBox() {
                 close={() => setOpen(false)}
                 render={{
                     slide: ({ slide }) => (
-                        <GatsbyImage  layout="constrained" objectFit="contain" image={slide?.src} alt={slide?.description} />
+                        <GatsbyImage  layout="constrained" objectFit="contain" style={{"height":"100%"}} image={slide?.src} alt={slide?.description} />
                     ),
                     iconPrev: () => <LeftButton />,
                     iconNext: () => <RightButton />
@@ -147,8 +147,8 @@ function AboutSection() {
                         </section>
 
                     </div>
-                    <div className="md:col-span-2 lg:col-span-1">
-                        <img className='w-full h-full object-cover' src="https://images.unsplash.com/photo-1492288991661-058aa541ff43?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="" />
+                    <div className="md:col-span-2 lg:col-span-1 flex">
+                    <StaticImage className='max-h-[40rem] md:max-h-full z-20' quality={100} style={{"height":"100%"}} objectFit={'cover'} objectPosition={'bottom'} src="../images/about_photo.jpg" alt="Mandeep Baghel" />
                     </div>
                 </div>
             </div>

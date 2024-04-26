@@ -1,9 +1,5 @@
 import React from 'react'
-import PersiLogo from "../images/companies/persistent.png";
-import CodexLogo from "../images/companies/codex.png";
-import ZeitLogo from "../images/companies/zeit.png";
-import FALogo from "../images/companies/foreignadmits.png";
-import OneWaterLogo from "../images/companies/onewater.png";
+import { StaticImage } from 'gatsby-plugin-image';
 
 const HeaderSection = () => {
     return (
@@ -39,7 +35,7 @@ const HeaderSection = () => {
                             <div className='max-w-sm'>
                                 <h2 className='text-gradient bg-gradient-to-r from-orange to-lightred mb-4'>Design</h2>
                                 <p className='text-lightgray'>
-                                creating captivating user experiences is at the heart of what I want to do. I am not a conventional UI Designer. I do use design tools but that is not the complete story, my design process continues while development as well, by tweaking stylesheets and finding what works best.
+                                Creating captivating user experiences is at the heart of what I want to do. I am not a conventional UI Designer. I do use design tools but that is not the complete story, my design process continues while development as well, by tweaking stylesheets and finding what works best.
                                 </p>
                             </div>
                             <div className='max-w-sm'>
@@ -55,23 +51,22 @@ const HeaderSection = () => {
 
                 <div className='m-div mb-0'>
                     <h3 className='text-gradient bg-gradient-to-r from-green to-yellow mb-head'>Awesome organisations I’ve worked with</h3>
-
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 justify-center align-center gap-6 gap-y-12 mt-4 md:mt-8">
                         <div className="org-logo flex justify-center">
-                            <img src={PersiLogo} className="h-8" alt="persistent" />
+                            <StaticImage className='h-8' quality={100} objectFit={"contain"} objectPosition={"center"} src="../images/companies/persistent.png" alt="persistent" />
                         </div>
                         <div className="org-logo flex justify-center">
-                            <img src={ZeitLogo} className="h-8" alt="persistent" />
-                        </div>
+                            <StaticImage className='h-8' quality={100} objectFit={"contain"} objectPosition={"center"} src="../images/companies/zeit.png" alt="zeit" />
+</div>
                         <div className="org-logo flex justify-center">
-                            <img src={FALogo} className="h-8" alt="persistent" />
-                        </div>
+                            <StaticImage className='h-8' quality={100} objectFit={"contain"} objectPosition={"center"} src="../images/companies/foreignadmits.png" alt="foreignadmits" />
+</div>
                         <div className="org-logo flex justify-center">
-                            <img src={OneWaterLogo} className="h-10" alt="persistent" />
-                        </div>
+                            <StaticImage className='h-10' quality={100} objectFit={"contain"} objectPosition={"center"} src="../images/companies/onewater.png" alt="onewater" />
+</div>
                         <div className="org-logo flex justify-center">
-                            <img src={CodexLogo} className="h-12" alt="persistent" />
-                        </div>
+                            <StaticImage className='h-12' quality={100} objectFit={"contain"} objectPosition={"center"} src="../images/companies/codex.png" alt="codex" />
+</div>
                     </div>
 
                 </div>
