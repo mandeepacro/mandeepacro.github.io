@@ -17,7 +17,15 @@ const ProjectsSection = () => {
                   placeholder: DOMINANT_COLOR
                   ),
               }
-            }
+            },
+            image_mobile {
+              childImageSharp {
+                gatsbyImageData(
+                  width: 576
+                  placeholder: DOMINANT_COLOR
+                  ),
+              }
+            },
             title
             color
             desc
@@ -32,7 +40,9 @@ const ProjectsSection = () => {
                 }
               }
               name
-            }
+            },
+            link,
+            code_link
           }
         }
       }

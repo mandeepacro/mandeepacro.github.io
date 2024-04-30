@@ -47,7 +47,6 @@ function ImageLightBox() {
         photosArray.forEach(photo => {
             const img = getImage(photo?.image?.childImageSharp?.gatsbyImageData);
             photosList.push({ src: img, description: photo.caption });
-            //console.log("photos - ", photosList);
         });
         setPhotos(photosList);
     }, []); // empty dependency array to run the effect only once
@@ -63,7 +62,7 @@ function ImageLightBox() {
             </button>
             <Lightbox
                 plugins={[Captions, Counter]}
-                captions={{ showToggle: false, descriptionTextAlign: "center", descriptionMaxLines: 1 }}
+                captions={{ showToggle: false, descriptionTextAlign: "center", descriptionMaxLines: 3 }}
                 styles={{ captionsDescription: { fontFamily: "DM Sans, sans-serif", fontWeight: 700 } }}
                 open={open}
                 close={() => setOpen(false)}

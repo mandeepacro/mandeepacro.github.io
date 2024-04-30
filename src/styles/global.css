@@ -54,6 +54,16 @@
     .bg-gr-purple {
         background-image: linear-gradient(to bottom right, #FFB09F, #D0B3FF);
     }
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+   /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+  }
 }
 
 @layer components {
@@ -104,6 +114,10 @@
 
     .btn-sm span{
         @apply text-sm;
+    }
+
+    .btn-icon {
+        @apply flex gap-2 ml-2;
     }
 
     .btn-primary span {

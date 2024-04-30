@@ -54,6 +54,7 @@ export const Head = () =>
 <head>
 <title>Mandeep Baghel</title>
 <link rel="icon" type="image/x-icon" href={Favicon} />
+
 </head> 
 
 export default IndexPage

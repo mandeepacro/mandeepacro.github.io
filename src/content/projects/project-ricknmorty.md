@@ -1,23 +1,21 @@
 ---
-id: zeit
-title: Zeit Labs
-image: ../../images/projects/zeit.png
-image_mobile: ../../images/projects/zeit_mobile.png
-color: '#FFC325'
-desc: Official website for Zeit Labs. Created with beautiful design and eye-catching animations using GSAP and ScrollMagic. Optimized for performance.
+id: rickandmorty
+title: Rick and Morty App
+image: ../../images/projects/rickandmorty.png
+image_mobile: ../../images/projects/rickandmorty_mobile.png
+color: '#97ce4c'
+desc: A React app to view all characters of Rick and Morty series with details, see the episodes they appeared in, and search for specific characters.
 technologies:
   - name: HTML
     image: ../../images/logos/html.webp
-  - name: GreenSock
-    image: ../../images/logos/gsap.png
+  - name: React
+    image: ../../images/logos/react.png
   - name: SCSS
     image: ../../images/logos/sass.png
   - name: JavaScript
     image: ../../images/logos/js.png
-  - name: ScrollMagic
-    image: ../../images/logos/scrollmagic.png
-link: https://mandeepb29.github.io/zeit-new/
-code_link: https://github.com/mandeepb29/zeit-new
+link: https://rickkandmortyyy.netlify.app/
+code_link: https://github.com/mandeepb29/rick-and-morty-app
 ---
 # Requirements
 

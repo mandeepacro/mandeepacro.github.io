@@ -1,8 +1,8 @@
 import React from 'react'
-import BehanceIcon from '../../images/behance.svg';
-import GithubIcon from '../../images/github.svg';
-import LinkedinIcon from '../../images/linkedin.svg';
-import InstagramIcon from '../../images/instagram.svg';
+import BehanceIcon from '../../images/icons/behance.svg';
+import GithubIcon from '../../images/icons/github-footer.svg';
+import LinkedinIcon from '../../images/icons/linkedin.svg';
+import InstagramIcon from '../../images/icons/instagram.svg';
 
 function SocialMediaPanel({isWhite}) {
   return (

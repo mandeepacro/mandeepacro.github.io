@@ -6,7 +6,7 @@ function Footer() {
   return (
     <section className='bg-white p-0 z-[45] relative min-h-screen' id='contact'> 
         <div className="flex flex-col min-h-screen pt-16 xl:pt-0 justify-between">
-        <div className="container mt-16">
+        <div className="container lg:mt-16">
         <div className="text-center">
         <h2 className='section-heading section-heading-dark text-center max-w-3xl normal-case mx-auto text-2xl md:text-3xl md:leading-normal'>
         Thanks for stopping by, I’m currently looking to join a new team of creative designers and developers. If you think we might be a good fit for one another, please contact me.
