@@ -13,7 +13,6 @@ const ProjectsSection = () => {
             image {
               childImageSharp {
                 gatsbyImageData(
-                  width: 2000
                   placeholder: DOMINANT_COLOR
                   ),
               }
@@ -21,7 +20,6 @@ const ProjectsSection = () => {
             image_mobile {
               childImageSharp {
                 gatsbyImageData(
-                  width: 576
                   placeholder: DOMINANT_COLOR
                   ),
               }
@@ -50,7 +48,6 @@ const ProjectsSection = () => {
 `)
 
   const projects = data.allMarkdownRemark.nodes;
-  //console.log("projects -- ",projects);
 
   return (
     <section id='work'>

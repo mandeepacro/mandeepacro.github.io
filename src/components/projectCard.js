@@ -18,11 +18,12 @@ function ProjectCard({ project }) {
     },
   ])
 
+
   
   //console.log("project", project);
   return (
       <div className={`${styles.projectCard} ${showContent ? styles.showcontent:""}`} id="projectCard">
-        <GatsbyImage image={images} className={styles.projectImg} alt={`thumb-${project?.title}`} />
+        <GatsbyImage image={images} className={styles.projectImg} objectFit="cover" objectPosition="top" alt={`thumb-${project?.title}`} />
         {/* <img src={project?.image} className={styles.projectImg} alt={project?.title} /> */}
         <div className={`${styles.projectCardContent} h-[54rem] w-[54rem]`}>
           <p className={styles.heading} style={{ color: project?.color }}>
@@ -63,7 +64,7 @@ function ProjectCard({ project }) {
           {project?.technologies?.map((item, i) => (
             <div key={`tech_icon-${project?.title}-${item?.name}`} className={`${styles.projectTool}`} style={{ transitionDelay: (i) * 80 + "ms" }}>
               <div className={styles.projectIcon}>
-                <GatsbyImage alt={`thumb-${item?.title}`} image={getImage(item?.image?.childImageSharp?.gatsbyImageData)} />
+                <GatsbyImage alt={`thumb-${item?.name}`} image={getImage(item?.image?.childImageSharp?.gatsbyImageData)} />
               </div>
               <p className='text-sm text-white'>{item.name}</p>
             </div>

@@ -76,6 +76,9 @@ module.exports = {
 
       animation: {
         'fade-up': 'fadeup 800ms cubic-bezier(0.87, 0, 0.13, 1) forwards',
+      },
+      aspectRatio:{
+        '4/3' : '4 / 3'
       }
 
     },
